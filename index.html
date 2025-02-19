@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8"><!DOCTYPE html>
-<html lang="ru">
-<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>База оборудования</title>
@@ -29,79 +26,6 @@
             <option value="Монитор">Монитор</option>
             <option value="Охлаждение">Охлаждение</option>
         </select>
-        <input type="text" id="name" placeholder="Название" required>
-        <input type="number" id="price" placeholder="Цена" required>
-        <input type="url" id="link" placeholder="Ссылка на магазин" required>
-        <button type="submit">Добавить</button>
-    </form>
-    
-    <table id="hardwareTable">
-        <thead>
-            <tr>
-                <th onclick="sortTable(0)">Категория</th>
-                <th onclick="sortTable(1)">Название</th>
-                <th onclick="sortTable(2)">Цена</th>
-                <th>Ссылка</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-
-    <script>
-        let hardwareList = [];
-
-        document.getElementById('addForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const category = document.getElementById('category').value;
-            const name = document.getElementById('name').value;
-            const price = document.getElementById('price').value;
-            const link = document.getElementById('link').value;
-
-            hardwareList.push({ category, name, price, link });
-            updateTable();
-            this.reset();
-        });
-
-        function updateTable() {
-            const tbody = document.querySelector('#hardwareTable tbody');
-            tbody.innerHTML = '';
-            hardwareList.forEach(item => {
-                const row = `<tr>
-                    <td>${item.category}</td>
-                    <td>${item.name}</td>
-                    <td>${item.price} руб.</td>
-                    <td><a href="${item.link}" target="_blank">Купить</a></td>
-                </tr>`;
-                tbody.innerHTML += row;
-            });
-        }
-
-        function sortTable(columnIndex) {
-            hardwareList.sort((a, b) => {
-                let valA = Object.values(a)[columnIndex].toString().toLowerCase();
-                let valB = Object.values(b)[columnIndex].toString().toLowerCase();
-                return valA.localeCompare(valB, 'ru', { numeric: true });
-            });
-            updateTable();
-        }
-    </script>
-</body>
-</html>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>База оборудования</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f4f4f4; cursor: pointer; }
-    </style>
-</head>
-<body>
-    <h1>База оборудования</h1>
-    
-    <form id="addForm">
-        <input type="text" id="category" placeholder="Категория" required>
         <input type="text" id="name" placeholder="Название" required>
         <input type="number" id="price" placeholder="Цена" required>
         <input type="url" id="link" placeholder="Ссылка на магазин" required>
